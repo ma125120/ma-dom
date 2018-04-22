@@ -1,0 +1,23 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>测试ma-dom</title>
+</head>
+<body>
+	<div class="test">test text</div>
+	<input type="text" value="input value" class="val">
+	<script type="module">
+	//console.log(window)
+		import $ from '../lib/module/selector.js'
+		import { val,append, before,empty, remove } from '../lib/module/html.js'
+		import { text, css, animate } from '../lib/index.js';
+		console.log(animate({
+			el: $(".test")[0],
+			attr: "height"
+		}));
+
+		$(".test").test();
+
+	</script>
+</body>
+</html>
