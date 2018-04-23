@@ -2,14 +2,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>测试ma-dom</title>
+	<style>
+		.test {
+			margin-top: 1200px;
+		}
+	</style>
 </head>
 <body>
-	<div class="test">test text</div>
+	<div class="test"><span>test text </span><span class="box">box</span></div>
 	<input type="text" value="input value" class="val">
 	<script type="module">
 	//console.log(window)
 		import $ from '../lib/module/selector.js'
 		import { val,append, before,empty, remove } from '../lib/module/html.js'
+		import { getBox, getScroll, getViewportSize } from '../lib/module/size.js'
 		import { text, css, animate } from '../lib/index.js';
 		console.log(animate({
 			el: $(".test")[0],
@@ -17,6 +23,10 @@
 		}));
 
 		$(".test").test();
+
+		console.log(getBox($(".box")[0]));
+
+		console.log(getViewportSize());
 
 	</script>
 </body>
