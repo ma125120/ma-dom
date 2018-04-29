@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/common.css">
+	<style>
+	/*	div:focus {
+			border: none;
+			outline: none;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="input" contenteditable="true" id="te">这可能是被选中的div元素</div>
+	
+	<input type="text" value="testtt" id="a--input">
+	<textarea name="" id="" cols="30" rows="10">这可能是被选中的div元素</textarea>
+	<div class="wrap">
+		<button class="ma-btn success exec" data-exec="selectAll" data-exec2="red">全选</button>
+		<button class="ma-btn success exec" data-exec="redo">恢复</button>
+		<button class="ma-btn success exec" data-exec="undo">撤销</button>
+		<button class="ma-btn success exec" data-exec="copy">复制</button>
+		<button class="ma-btn success exec" data-exec="cut">剪切</button>
+		<button class="ma-btn success exec" data-exec="paste">粘贴</button>
+		<button class="ma-btn success exec" data-exec="delete">删除最后一个字符</button>
+		<button class="ma-btn success exec" data-exec="forwardDelete">删除选中部分</button>
+		<button class="ma-btn success exec" data-exec="insertText" data-exec2 = "test">插入文本</button>
+		<!-- 插入html其实也只是插入html中的文本而已 -->
+		<button class="ma-btn success exec" data-exec="insertHTML" data-exec2 = "<p>123</p>">插入html</button>
+		<button class="ma-btn success exec" data-exec="insertParagraph">插入段落</button>
+	</div>
+	<div class="wrap">
+		<button class="ma-btn success exec" data-exec="fontName" data-exec2="Arial">字体</button>
+		<button class="ma-btn success exec" data-exec="fontSize" data-exec2="5	">字体大小（1-7）</button>
+		<button class="ma-btn success exec" data-exec="foreColor" data-exec2="red">字体颜色</button>
+		<button class="ma-btn success exec" data-exec="formatBlock" data-exec2="h2">格式化文本</button>
+		<button class="ma-btn success exec" data-exec="hiliteColor" data-exec2="red">文本背景颜色</button>
+	</div>
+	<div class="wrap">
+		<button class="ma-btn success exec" data-exec="bold"><b>B</b></button>
+		<button class="ma-btn success exec" data-exec="italic"><i>I</i></button>
+		<button class="ma-btn success exec" data-exec="underline"><u>U</u></button>
+		<button class="ma-btn success exec" data-exec="insertOrderedList">有序列表</button>
+		<button class="ma-btn success exec" data-exec="insertUnorderedList">无序列表</button>
+		<button class="ma-btn success exec" data-exec="justifyCenter">居中对齐</button>
+		<button class="ma-btn success exec" data-exec="justifyFull">两端对齐</button>
+		<button class="ma-btn success exec" data-exec="justifyLeft">左对齐</button>
+		<button class="ma-btn success exec" data-exec="justifyRight">右对齐</button>
+	</div>
+	<div class="wrap">
+		<button class="ma-btn success exec" data-exec="createLink" data-exec2 = "http://www.baidu.com">添加链接</button>
+		<button class="ma-btn success exec img_btn" data-exec="insertImage" data-exec2="http://123p3.sogoucdn.com/imgu/2018/04/20180428174523_972.gif?t=1524971044675">插入图片</button>
+		<input type="file" id="file" hidden>
+		<button class="ma-btn success exec" data-exec="indent">增加缩进</button>
+		<button class="ma-btn success exec" data-exec="outdent">减少缩进</button>
+		<button class="ma-btn success exec" data-exec="insertHorizontalRule">插入横线hr</button>
+		<button class="ma-btn success exec" data-exec="strikeThrough">中间插入横线</button>
+		<button class="ma-btn success exec" data-exec="subscript">下标</button>
+		<button class="ma-btn success exec" data-exec="superscript">上标</button>
+		
+	</div>
+	
+	<!-- <button class="ma-btn success exec" data-exec="enableInlineTableEditing">enableInlineTableEditing</button>
+	<button class="ma-btn success exec" data-exec="enableObjectResizing">enableObjectResizing</button> -->
+
+	<!-- <button class="ma-btn success exec" data-exec="increaseFontSize" data-exec2="red">increaseFontSize</button> -->
+	
+	<!-- <button class="ma-btn success exec" data-exec="insertBrOnReturn" data-exec2="red">按下回车插入br元素</button>
+	 -->
+	<div>
+		<button class="ma-btn success exec" data-exec="styleWithCSS" data-exec2="true">使用css</button>
+		<button class="ma-btn success exec" data-exec="removeFormat" data-exec2="red">移除所有格式</button>
+		<button class="ma-btn success exec" data-exec="unlink" data-exec2="red">移除超链接</button>
+	</div>
+
+	<script>
+		;(function() {
+			var d = document,
+					els = [...document.querySelectorAll(".exec")],
+					a_text = document.querySelectorAll("#a--input")[0].value,
+					file = document.querySelectorAll("#file")[0],
+					img_btn = document.querySelectorAll(".img_btn")[0];
+			d.addEventListener("click",function(e) {
+				var el = e.target || e.currentTarget;
+				els.map(ele=>{
+					if(ele == el) {
+						let exec = el.dataset.exec,
+								exec2 = el.dataset.exec2;
+						if(exec != "insertImage") {
+							document.execCommand(exec,false,exec2);
+						}
+					}
+				});
+				return false;
+			});
+
+			file.addEventListener("change",function(e) {
+				var f = e.target.files[0];
+				var reader = new FileReader();
+				reader.readAsDataURL(f);
+				reader.onload = function(e) {
+					document.execCommand("insertImage",false,this.result);
+				}
+			});
+
+			img_btn.addEventListener("click",function() {
+				file.click();
+			});
+		})();
+		
+
+
+	</script>
+</body>
+</html>

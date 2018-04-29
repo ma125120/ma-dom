@@ -1,0 +1,64 @@
+.ma-animate {
+	animation: slide 3s ease-out;
+	transform-origin: 0 0;
+}
+.slide-up {
+	animation-name: slide;
+	animation-direction: reverse;
+}
+.slide-down {
+	animation-name: slide;
+}
+@keyframes slide {
+	0% {
+		transform: scale(1,0);
+	}
+	100% {
+		transform: scale(1,1);
+	}
+}
+
+@keyframes water {
+	0% {
+		transform: scale(1,1);
+	}
+	100% {
+		transform: scale(8,4);
+	}
+}
+
+
+
+.slide-left-open {
+	animation-name: slide-lr;
+}
+.slide-left-close {
+	animation-name: slide-lr;
+	animation-direction: reverse;
+}
+@keyframes slide-lr {
+	0% {
+		transform: scale(0,1);
+	}
+	100% {
+		transform: scale(1,1);
+	}
+}
+
+.slide-right-open {
+	animation-name: slide-rl;
+	transform-origin: 100% 0;
+}
+.slide-right-close {
+	animation-name: slide-rl;
+	transform-origin: 100% 0;
+	animation-direction: reverse;
+}
+@keyframes slide-rl {
+	0% {
+		transform: scale(0,1);
+	}
+	100% {
+		transform: scale(1,1);
+	}
+}
