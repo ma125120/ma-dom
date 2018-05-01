@@ -129,7 +129,8 @@ css(el,"width","300px")和css(el,{width:"300px"})都可以使用。
 3.  isFunction(data)判断传入的参数是否为函数
 4.  ObjectToArray(obj)将传入的对象转化为一个包含键值对的二维数组;如{a:123,b:456}将被转化为[["a",123],["b",456]];
 5.  toFormData(obj,prefix)将传入的对象转化为符合表单请求的字符串，第二个参数决定是否在字符串的最前方添加？,默认为false。toFormData({a:"test",b:"test1"},true)将返回  "?a=test&b=test1"。
-6.  setStoreData(state,keys,data);可用于vuex或者vue,```javascript
+6.  setStoreData(state,keys,data);可用于vuex或者vue,
+```javascript
 例如vuex,
 var state = {
 	lists : [{
