@@ -4,7 +4,7 @@
 	<title>测试ma-dom</title>
 	<style>
 		.test {
-			margin-top: 1200px;
+			margin-top: 120px;
 		}
 	</style>
 </head>
@@ -13,20 +13,45 @@
 	<input type="text" value="input value" class="val">
 	<script type="module">
 	//console.log(window)
-		import $ from '../lib/module/selector.js'
+		import $ from '../lib/jq/index.js'
 		import { val,append, before,empty, remove } from '../lib/module/html.js'
 		import { getBox, getScroll, getViewportSize } from '../lib/module/size.js'
-		import { text, css, animate } from '../lib/index.js';
+		import { text, css, animate, attr, fullscreen, addEvent, on, removeEvent } from '../lib/index.js';
 		console.log(animate({
 			el: $(".test")[0],
 			attr: "height"
 		}));
 
-		$(".test").test();
+		console.log($(".test").css({
+			width: "200px",
+			height: "200px",
+			background: "#c0deac"
+		}).attr("style"));
+		
+		console.log($(".box").getBox());
 
-		console.log(getBox($(".box")[0]));
+		$(".test").addEvent("click",function() {
+			fullscreen($(".box")[0]);
+			console.log("事件绑定");
+			$(".test").removeEvent("click");
+		});
+		$(".test").addEvent("click",function() {
+			console.log(123)
+		});
+		$(document).on("click",".test",function() {
+			console.log("事件委托");
+			$(document).off("click",".test")
+		});
 
-		console.log(getViewportSize());
+		css(document.body,{
+			width: "100px",
+			height: "200px"
+		});
+
+		attr(document.body,{
+			id:"test01",
+			name: "test_body"
+		})
 
 	</script>
 </body>
