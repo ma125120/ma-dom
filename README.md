@@ -11,7 +11,7 @@
 - animate(不推荐，还不完善，建议使用CSS3动画)
 - getBox,getElementPos,getScroll,getViewportSize
 - addEvent,removeEvent,on,off
-- isArray,isObject,isFunction,ObjectToArray,toFormData
+- isArray,isObject,isFunction,ObjectToArray,toFormData,setStoreData
 	
 完整的引入方式为：
 ```javascript
@@ -129,3 +129,23 @@ css(el,"width","300px")和css(el,{width:"300px"})都可以使用。
 3.  isFunction(data)判断传入的参数是否为函数
 4.  ObjectToArray(obj)将传入的对象转化为一个包含键值对的二维数组;如{a:123,b:456}将被转化为[["a",123],["b",456]];
 5.  toFormData(obj,prefix)将传入的对象转化为符合表单请求的字符串，第二个参数决定是否在字符串的最前方添加？,默认为false。toFormData({a:"test",b:"test1"},true)将返回  "?a=test&b=test1"。
+6.  setStoreData(state,keys,data);可用于vuex或者vue,```javascript
+例如vuex,
+var state = {
+	lists : [{
+		id:1,
+		str:"213",
+		child:{
+			"test":"test child"
+		}
+	},{
+		id:2,
+		str:"asd"
+	}]
+};
+setStoreData(state,["lists",0,"child"],{"new-child":"new-child"});
+console.log(state.lists[0]);
+
+使用该函数即可轻松改变嵌套多层的对象。state为最顶层的对象，keys为每一层的键名，data为需要替换的数据。
+在vue中使用时第一参数写成this即可
+```
