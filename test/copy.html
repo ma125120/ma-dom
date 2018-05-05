@@ -29,16 +29,16 @@
 			margin-top: 36px;
 		}
 		.copy--text {
-			position: fixed;
+			/*position: fixed;
 			top: -10000px;
 			left: -10000px;
 			z-index: -100;
-			opacity: 0;
+			opacity: 0;*/
 		}
   </style>
 </head>
 <body>
-	<div class="copy--text copy_text" id="copy">复制到剪贴板的内容</div>
+	<div class="copy--text copy_text" id="copy">复制到剪贴板的内容<img src="http://files.jb51.net/image/txy3000423.gif" alt=""><span>sda</span></div>
 	<div class="ma-btn extra copy_btn">复制</div>
 	<script>
 		var btn = document.querySelectorAll(".copy_btn")[0],
@@ -52,6 +52,7 @@
 			var end = el.childNodes.length;
 			range.setStart(el,0);
 			range.setEnd(el,end);
+			
 
 			var selection = window.getSelection();
 			selection.removeAllRanges();
