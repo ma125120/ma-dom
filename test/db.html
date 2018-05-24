@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>indexdb</title>
+</head>
+<body>
+  <ul id="todoItems">
+    <li>12</li>
+    <li>1</li>
+    <li>1</li>
+    <li>4156</li>
+    <li>45</li>
+  </ul>
+  <div id="todo">sdad</div>
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODJFMEYwNEY1MDI5MTFFOEIzMEY5QkRGQjVDNTc3OEMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODJFMEYwNTA1MDI5MTFFOEIzMEY5QkRGQjVDNTc3OEMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4MkUwRjA0RDUwMjkxMUU4QjMwRjlCREZCNUM1Nzc4QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4MkUwRjA0RTUwMjkxMUU4QjMwRjlCREZCNUM1Nzc4QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqXimwsAAAH+UExURWGs/mSx/2Gt/2Wz/2Ow/2Sy/2e2/2Ku/2e3/2a1/2Kt/2Gs/2W0/2Ov/2a0/2i4/2Cq+2Wy/2e4/2i3/2a2/2i5/0uFw0uFxUN2rlGP0lme5Wm5/0N3r2Gs+jRdiWCq/D5uoFqg51+p91me5EuGxkh/vFSV3E+MzT1toF+o+FKR11COzTNbh2Kv/2Ku+1ui712l70qDwUqDwk+My1SV2T9wplSU21uh7lGQ0mKu/UuFwD1rnDxpnDxrnlGPzzlllF6m9lKQ1VGQ1UqCv2Cr/F2m8EiBvkV7tEd+ulyj60J0rGOw/VWW3Fmf6lOT1TFXgVCN0GKt+Fmd6EmCvFib5kV7s1yi7j5uokmDwE+LzT5tnmm6/1ic5lyi7F6m8WGs+Ud+u2Gt+lCP0VCO0EmBvlCO0V2k81ui6jtomFCO0j9vpVWW3TJZg0yHx1aY3kBxpGOv/UJ2rFWX22Ov/E+Lzj1tomGt/l6m8FGP012l80+MykN2r1md5EqDvkyGwz5uo0mCvztomlme6UmCwFyi61me51ui61aZ4lid51WW3lic52Ku/mKu/Fqf6luh7EuFxj5uoVqf62e1/1WX31OT2Vyj7Fea5EmBv0iAu1mf50Fzp2Ox/1uh6UByqWOu/0J2rUR4skiAvGKt+2Gt+Ud9t0qEwzdhkFqg6lid6AAAAAD6VTgAAACqdFJOU/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AtQnI1QAAA1pJREFUeNqkl2V72zAQgCXLki1DnKQpd+V27cpjZmZmZmZmZmZmyr+c7LQNCGI/u2+2dK9O0ukApP9TgHTk2Pa/8bih625dfHfl1aiAhZBQ6GqaDQDQNAMiM7b6S2hA2TgTaqBAbJc6I0MBRjiOBYRiQ7OqKOB9wrGBXPSSDjXgY9ICakEJFQBBUFQM75IMsKraAGGENIkBbz0bhBNnjwjwzQOhBb3iAXNKQARBDRygFEQSuqMAgKxoAJCclAe4DSPqA83JBXwSHoCtI5OJg4XWwVs5ANEGbEQ2Du9MpztvTDOILiCYWcBJxA+7dGiOu7wzNd4ltwwCYgIDlxU8Gof3UvNUP+AXD4C9GbW2NU+v9BMgRzAa+wHdnHnG0UCn1yS+6GMzNpwWnYIPMDkDUr7C5FI382Uhbwr77nMKp+GXAeAe5wPwAJu/LudqrWqfmCi0VIMBgI9/Kc633Tj7s4i7zGQA4Hbgg9N3IbfdFu6wnT4GqKBc4LvOZrsWB5jILeWOYYClmAOsZLOtfIDHfl3gltJ0Blj+ufC31c1m47yTMfxd3eEdGjFAHf8O3Nej7rt5+hv8Yz3BuzNhgLgmCP80V9+iuq//VeDxZAlIPyjy8G0KfwaeSAUxF9WAtK7W1+kKRczCzcUAeHNG/XJKGFVweRHAh02B+pGHMXHOwLNBeqYm17cW+OrrhxBZyiK14lsYdNWtTP+4J894/jWeUwR0wvTnqjIGZYCz8ohuYwYYjRWx3XflGUg+7gOGKQBGu/A5hwfgfT5AXtMEgOkKgHnNB/S40jNADPBCcUY0iEjzn8tNfMMinsLNn2Wickw+BeoJVa3TlgG0yndpxBQGBLEzSG3Se4BTW1rlJjhPBgCPJA/KvcgGK2R+Ysey6T0puaXfQVKUPBZangXsEq9C9weRRAwwfuSWOEj44KzvbOiwZH9efpElLhIt1GNIrmGg/hgArCXig3Iljx2eKawTq1CUGq3L4UvdmxEIBhUV2/NCE7qouNxvIOH0IZI1HB3JMAUvnSXvWCY4uHjDcl7ZdDWZhjpRbiva9smzCCuwnfEhGs/6RhOL3F8nsCxs67sYmsjVssFWMzChf+ojNd9lj3VECMI4kSJUb6/cG7l79+VgzaHmnbXKKf8EGACGKTvIMbSK2AAAAABJRU5ErkJggg==" alt="">
+  <script>
+    var dbName = "马鹏达"; //数据库名称
+    var dbVersion = 1; //数据库版本
+    var tablename = "test"; //表名
+    //定义一个IndexDB方法集合对象
+    var H5AppDB = {};
+    //实例化IndexDB数据上下文，这边根据浏览器类型来做选择
+    var indexedDB = window.indexedDB || window.webkitIndexedDB ||window.mozIndexedDB;
+
+    H5AppDB.indexedDB = {};
+    H5AppDB.indexedDB.db = null;
+    //错误信息，打印日志
+    H5AppDB.indexedDB.onerror = function (e) {
+        console.err(e);
+    };
+
+    H5AppDB.indexedDB.open = function() {
+        //初始IndexDB
+        var request = indexedDB.open(dbName, dbVersion);
+
+        request.onsuccess = function(e) {
+            // Old api: var v = "2-beta"; 
+            console.log("成功打开数据库: " + dbName);
+            H5AppDB.indexedDB.db = e.target.result;
+            var db = H5AppDB.indexedDB.db;
+            if (db.setVersion) {
+                console.log("旧版本号: " + db.setVersion);
+                if (db.version != dbVersion) {
+                    var req = db.setVersion(dbVersion);
+                    req.onsuccess = function() {
+                        if (db.objectStoreNames.contains(tablename)) {
+                            db.deleteObjectStore(tablename);
+                        }
+                        var store = db.createObjectStore(tablename, {
+                            keyPath: "timeStamp"
+                        }); //keyPath：主键，唯一性
+                        var trans = req.result;
+                        trans.oncomplete = function(e) {
+                            console.log("== 传输完成 ==");
+                            H5AppDB.indexedDB.getAllTodoItems();
+                        }
+                    };
+                } else {
+                    H5AppDB.indexedDB.getAllTodoItems();
+                }
+            } else {
+                H5AppDB.indexedDB.getAllTodoItems();
+            }
+        }
+        // 如果版本不一致，执行版本升级的操作
+        request.onupgradeneeded = function(e) {
+
+            var db = e.target.result;
+            var store = db.createObjectStore('Users', {keyPath: 'userId', autoIncrement: false});
+            console.log('创建对象仓库成功');
+            H5AppDB.indexedDB.db = e.target.result;
+            var db = H5AppDB.indexedDB.db;
+            if (db.objectStoreNames.contains(tablename)) {
+                db.deleteObjectStore(tablename);
+            }
+            var store = db.createObjectStore(tablename, {
+                keyPath: "timeStamp"
+            }); //NoSQL类型数据库中必须的主键，唯一性
+            var transaction = e.target.transaction;
+
+            transaction.oncomplete =function(event) {    
+              H5AppDB.indexedDB.getAllTodoItems();
+            }
+            
+        }
+        request.onfailure = H5AppDB.indexedDB.onerror;
+    };
+
+    H5AppDB.indexedDB.getAllTodoItems = function() {
+        var todos = document.getElementById("todoItems");
+        todos.innerHTML = "";
+        var db = H5AppDB.indexedDB.db;
+        var trans = db.transaction([tablename], "readwrite"); //通过事物开启对象
+        var store = trans.objectStore(tablename); //获取到对象的值
+        // Get everything in the store;
+        var keyRange = IDBKeyRange.lowerBound(0);
+        var cursorRequest = store.openCursor(keyRange); //开启索引为0的表
+        
+        cursorRequest.onsuccess = function(e) {
+            var result = e.target.result;
+            if ( !! result == false) return;
+            renderTodo(result.value);
+            result.continue(); //这边执行轮询读取
+        };
+        cursorRequest.onerror = H5AppDB.indexedDB.onerror;
+    };
+
+    //绑定数据
+    function renderTodo(row) {
+        var todos = document.getElementById("todoItems");
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        var t = document.createTextNode(row.text);
+
+        a.addEventListener("click", function() {
+            H5AppDB.indexedDB.deleteTodo(row.timeStamp);
+        }, false);
+
+        a.textContent = " [Delete]";
+        li.appendChild(t);
+        li.appendChild(a);
+        todos.appendChild(li);
+    };
+
+    H5AppDB.indexedDB.addTodo = function(todoText) {
+        var db = H5AppDB.indexedDB.db;
+        var trans = db.transaction([tablename], "readwrite");
+        var store = trans.objectStore(tablename);
+        var newArray = new Array("键1", "值1");
+        //数据以对象形式保存，体现NoSQL类型数据库的灵活性
+        var data = {
+            "text": todoText,
+            "timeStamp": new Date().getTime(),
+            "obj": newArray
+        };
+        var request = store.put(data); //保存数据
+        request.onsuccess = function(e) {
+            H5AppDB.indexedDB.getAllTodoItems();
+        };
+
+        request.onerror = function(e) {
+            console.log("添加出错: ", e);
+        };
+    };
+
+    function addTodo() {
+        var todo = document.getElementById("todo");
+        H5AppDB.indexedDB.addTodo(todo.value);
+        todo.value = "";
+    }
+
+    H5AppDB.indexedDB.deleteTodo = function(id) {
+        var db = H5AppDB.indexedDB.db;
+        var trans = db.transaction([tablename], "readwrite");
+        var store = trans.objectStore(tablename);
+        var request = store.delete(id);//根据主键来删除
+        request.onsuccess = function(e) {
+            H5AppDB.indexedDB.getAllTodoItems();
+            alert("删除成功");
+        };
+        request.onerror = function(e) {
+            console.log("删除出错: ", e);
+        };
+    };
+
+    H5AppDB.indexedDB.open();
+  </script>
+  
+</body>
+</html>

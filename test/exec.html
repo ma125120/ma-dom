@@ -27,7 +27,7 @@
 		<button class="ma-btn success exec" data-exec="forwardDelete">删除选中部分</button>
 		<button class="ma-btn success exec" data-exec="insertText" data-exec2 = "test">插入文本</button>
 		<!-- 插入html其实也只是插入html中的文本而已 -->
-		<button class="ma-btn success exec" data-exec="insertHTML" data-exec2 = "<p>123</p>">插入html</button>
+		<button class="ma-btn success exec" data-exec="insertHTML">插入html</button>
 		<button class="ma-btn success exec" data-exec="insertParagraph">插入段落</button>
 	</div>
 	<div class="wrap">
@@ -73,11 +73,24 @@
 		<button class="ma-btn success exec" data-exec="removeFormat" data-exec2="red">移除所有格式</button>
 		<button class="ma-btn success exec" data-exec="unlink" data-exec2="red">移除超链接</button>
 	</div>
-
+	<div class="ma-btn success exec" data-exec="strikeThrough">中间插入横线</div>
 	<script>
 		;(function() {
+			var toArray = function(obj) {
+				return [].slice.call(obj)
+			}
+			var execFn = function(exec,flag,exec2) {
+				if(!document.execCommand(exec,flag,exec2) && window && window.selectElement) {
+					var selectElement = window.selectElement,
+							selection = window.getSelection();
+					selection.removeAllRanges();
+					selection.addRange(selectElement);
+					document.execCommand(exec,flag,exec2);
+					selection.removeAllRanges();
+				}
+			}
 			var d = document,
-					els = [...document.querySelectorAll(".exec")],
+					els = toArray(document.querySelectorAll(".exec")),
 					a_text = document.querySelectorAll("#a--input")[0].value,
 					file = document.querySelectorAll("#file")[0],
 					img_btn = document.querySelectorAll(".img_btn")[0],
@@ -88,12 +101,24 @@
 					if(ele == el) {
 						let exec = el.dataset.exec,
 								exec2 = el.dataset.exec2;
+						if(exec == 'insertHTML') {
+							var str = window.getSelection().toString();
+							str = `<b>${str}</b>`;
+							execFn(exec,false,str);
+						}
 						if(exec != "insertImage") {
-							document.execCommand(exec,false,exec2);
+							execFn(exec,false,exec2);
 						}
 					}
 				});
 				return false;
+			});
+			d.addEventListener("focusout",function(e) {
+				var el = e.target || e.currentTarget;
+				if(window.getSelection().toString()) {
+					var select = window.getSelection().getRangeAt(0);
+					window.selectElement = select; 
+				}
 			});
 
 			file.addEventListener("change",function(e) {
@@ -101,7 +126,7 @@
 				var reader = new FileReader();
 				reader.readAsDataURL(f);
 				reader.onload = function(e) {
-					document.execCommand("insertImage",false,this.result);
+					execFn("insertImage",false,this.result);
 				}
 			});
 
