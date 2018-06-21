@@ -56,7 +56,13 @@ import {
 	openFile,
 	getFileUrl,
 	storeSelection,
-	copy
+	copy,
+	xss,
+	getPostfix,
+	getType,
+	toArray,
+	validateData,
+	rgbToHex,
 } from 'ma-dom'
 
 ```
@@ -161,3 +167,19 @@ console.log(state.lists[0]);
 9.  openFile(cb);需要传入回调函数。触发该函数后，会自动打开选择文件的弹窗，选择完毕后dataURL会作为回调函数的第一个参数,file为第二个参数，files为第三个参数
 10.  copy(el);将需要复制内容的DOM元素作为参数传入，即可将该DOM元素的内容复制至剪贴板。如果需要隐藏元素，请使用```css opacity:0;position:fixed;top:-10000px;left:-10000px;z-index: -100;```;<b>使用display: none或者visibility: hidden会造成无法复制现象。</b>
 11.  storeSelection(el,start);存储某个节点的选区信息，选中该节点的全部区域。传入第二个参数时，只保留光标的最终状态，不会选中其他部分。<b>注意：调用该方法后，会导致其他输入区域无法使用，还需要调用window.getSelection().removeAllRanges()方法移除之前的选取</b>
+12.  getPostfix(name);获取文件名的后缀
+13.  toArray(data);将类数组转换为数组；
+14.  rgbToHex(rgb);将rgb的颜色代码转为16进制；如rgb(255,0,0)将被转换为"#FF0000";
+15.  validateData(data,regs);对输入的数据进行验证;	返回为null表示数据完全合法;不合法时将返回{msg:String,error:Boolean}
+
+```javascript
+var data = {
+	username: 123546
+},regs = [{
+	name: 'tel',
+	reg: /\w{6,20}/g,
+	msg:'错误信息'
+}];
+
+validateData(data,regs);
+```
